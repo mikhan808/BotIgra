@@ -77,7 +77,8 @@
                                     <directory>${pom.basedir}</directory>
                                     <filtering>true</filtering>
                                     <includes>
-                                        <include>launch.bat</include>
+                                        <include>*.bat</include>
+                                        <include>*.properties</include>
                                     </includes>
                                 </resource>
                             </resources>
