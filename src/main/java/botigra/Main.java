@@ -10,7 +10,8 @@ public class Main {
         ApiContextInitializer.init(); // Инициализируем апи
         TelegramBotsApi botapi = new TelegramBotsApi();
         try {
-            BotIgra bot = new BotIgra();
+            BotIgra bot;
+            bot = new BotIgra();
             botapi.registerBot(bot);
         } catch (TelegramApiException e) {
             e.printStackTrace();
