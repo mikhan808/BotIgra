@@ -74,6 +74,7 @@ public class BotIgra extends TelegramLongPollingBot {
                     e.printStackTrace();
                 }
                 sendMsg(id, "Добро пожаловать");
+                sendVopros();
             } else sendMsg(id, "Введите пароль");
         }
 
