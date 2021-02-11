@@ -1,11 +1,11 @@
 package botigra;
 
-import org.telegram.telegrambots.api.methods.send.SendMessage;
-import org.telegram.telegrambots.api.objects.Chat;
-import org.telegram.telegrambots.api.objects.Message;
-import org.telegram.telegrambots.api.objects.Update;
+
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -50,7 +50,6 @@ public class BotIgra extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         Message msg = update.getMessage();
         Long id = msg.getChatId();
-        Chat chat = msg.getChat();
         List<Long> trueChats = getTrueChats();
         if (trueChats.contains(id)) {
             if (msg.getText().toLowerCase().contentEquals(voproses.get(currentVopros).getOtvet().toLowerCase())) {
@@ -88,12 +87,12 @@ public class BotIgra extends TelegramLongPollingBot {
         }
     }
 
-    private void sendMsg(Long ChatId, String text) {
+    private void sendMsg(Long chatId, String text) {
         SendMessage s = new SendMessage();
-        s.setChatId(ChatId); // Боту может писать не один человек, и поэтому чтобы отправить сообщение, грубо говоря нужно узнать куда его отправлять
+        s.setChatId(chatId.toString()); // Боту может писать не один человек, и поэтому чтобы отправить сообщение, грубо говоря нужно узнать куда его отправлять
         s.setText(text);
         try { //Чтобы не крашнулась программа при вылете Exception
-            sendMessage(s);
+            execute(s);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
@@ -159,4 +158,5 @@ public class BotIgra extends TelegramLongPollingBot {
     public String getBotToken() {
         return token;
     }
+
 }
