@@ -42,7 +42,7 @@ public class BotIgra extends TelegramLongPollingBot {
             sendAll("Вопрос:");
             sendAll(voproses.get(currentVopros).getVopros());
         } else {
-            sendAll("Поздравляю! Вы выиграли! Молодцы)");
+            sendAll("Поздравляю! Ты выиграл! С днем рождения!)");
         }
     }
 
